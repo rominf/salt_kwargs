@@ -17,7 +17,8 @@ def install(name, **kwargs):
     print()
 
 
-install('vim')
-install('vim', without_cd=False, plus_repo='http://example.com')
-install('vim', without_cd='ololo')
-install('vim', plus_repo=True)
+if __name__ == '__main__':
+    install('vim')
+    install('vim', without_cd=False)
+    install('vim', without_cd=False, plus_repo='http://example.com')
+    install('vim', without_cd='ololo')
