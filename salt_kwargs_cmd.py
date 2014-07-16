@@ -10,8 +10,7 @@ def kwargs_spec(command, arguments, schema):
                 if k.startswith('--'):
                     del kwargs[k]
                     kwargs[k[2:].replace('-', '_')] = v
-            f.__globals__['cmd'] = str(Command(command).bake(
-                arguments, **kwargs))
+            f.__globals__['cmd'] = str(Command(command).bake(**kwargs).bake(arguments))
             return f(*args, **kwargs)
         setattr(wrapper, '__annotations__', {'kwargs': schema})
         return wrapper
